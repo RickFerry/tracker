@@ -18,6 +18,7 @@ import Controles from './Controles.vue'
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Formulario',
+  emits: ['aoSalvar'],
   data() {
     return {
       descricao: ''
@@ -25,7 +26,10 @@ export default defineComponent({
   },
   methods: {
     finalizarTarefa(tempo: number): void{
-
+      this.$emit('aoSalvar', {
+        tempoSegundos: tempo,
+        descricao: this.descricao
+      })
       this.descricao = ''
     }
   },
