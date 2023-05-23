@@ -3,6 +3,7 @@
     <h1>
       <img src="../assets/logo.png" alt="Logo da tela">
     </h1>
+    <button class="button" @click="alterarTema">{{ textoBotao }}</button>
   </header>
 </template>
 
@@ -10,21 +11,40 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'BarraLateral'
+  name: 'BarraLateral',
+  emits: ['aoTemaAlterado'],
+  data() {
+    return {
+      modoEscuro: false
+    }
+  },
+  computed: {
+    textoBotao(): string {
+      return this.modoEscuro ? 'Modo Claro' : 'Modo Escuro'
+    }
+  },
+  methods: {
+    alterarTema() {
+      this.modoEscuro = !this.modoEscuro
+      this.$emit('aoTemaAlterado', this.modoEscuro)
+    }
+  },
 })
 </script>
 
 <style scoped>
-  header{
-    padding: 1rem;
-    background: #0d3b66;
-    width: 100%;
-    height: 100vh;
+header {
+  padding: 1rem;
+  background: #0d3b66;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  header {
+    padding: 2.5rem;
+    height: auto;
   }
-  @media only screen and (max-width: 768px) {
-    header{
-      padding: 2.5rem;
-      height: auto;
-    }
-  }
+}
 </style>

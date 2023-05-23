@@ -1,6 +1,6 @@
 <template>
   <section>
-    <strong>{{ tempoFormatado }}</strong>
+    <strong class="display">{{ tempoFormatado }}</strong>
   </section>
 </template>
 
@@ -24,4 +24,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.display {
+  color: var(--texto-primario);
+}
+</style>

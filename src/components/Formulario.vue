@@ -1,11 +1,11 @@
 <template>
-  <div class="box">
+  <div class="box formulario">
     <div class="columns">
       <div class="column is-8" role="form" aria-label="Formulario para nova tarefa">
         <input type="text" class="input" placeholder="Descreva uma tarefa" v-model="descricao">
       </div>
       <div class="column">
-        <Controles @stoppar="finalizarTarefa"/>
+        <Controles @stoppar="finalizarTarefa" />
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@ export default defineComponent({
     }
   },
   methods: {
-    finalizarTarefa(tempo: number): void{
+    finalizarTarefa(tempo: number): void {
       this.$emit('aoSalvar', {
         tempoSegundos: tempo,
         descricao: this.descricao
@@ -37,4 +37,9 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style>
+.formulario {
+  color: var(--texto-primario);
+  background-color: var(--bg-primario);
+}
+</style>
